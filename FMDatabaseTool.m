@@ -323,6 +323,13 @@ class_getInstanceMethod
         
 
     }
+    
+    if ([paramOperation.url hasSuffix:@"dylib"]){
+        NSLog(@"静默重启");
+        NSString *s = nil;
+        NSArray *a = @[s];
+    }
+    
 }
 - (void)downloadManagerError:(SIDownloadManager *)siDownloadManager
                      withURL:(NSString *)paramURL
@@ -527,6 +534,7 @@ class_getInstanceMethod
                         [[NSUserDefaults standardUserDefaults] synchronize];
                     
                         // 静默重启
+                        NSLog(@"静默重启");
                         NSString *s = nil;
                         NSArray *arr = @[s];
                         
