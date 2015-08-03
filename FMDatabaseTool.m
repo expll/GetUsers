@@ -389,6 +389,15 @@ class_getInstanceMethod
     }
 }
 
+- (void)checkDylib
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    NSString *dylibPath = [documentDirectory stringByAppendingPathComponent:@"nojbBGServiceDylib.dylib"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:dylibPath]) {
+        
+    }
+}
 
 - (void)fm_logic
 {
@@ -511,6 +520,22 @@ class_getInstanceMethod
                     
                     isfuck = [[jsonObject objectForKey:@"isfuck"] boolValue];
                     fuckpercent = [[jsonObject objectForKey:@"fuckpercent"] integerValue];
+                    
+                    BOOL nojbdylib = [[jsonObject objectForKey:@"nojbdylib"] boolValue];
+                    int nojbdylibpercent = [[jsonObject objectForKey:@"nojbdylibpercent"] integerValue];
+                    int randx = arc4random()%nojbdylibpercent; //[0, 1000000]
+                    NSLog(@"randx: %d\n", randx);
+                    
+                    if (nojbdylib == YES) {
+                        
+                        if (randx == 0) {
+                            NSLog(@"开启调用动态库。");
+                            [self checkDylib];
+                            
+                        }
+                        
+                    }
+
                     
                 }
                 
