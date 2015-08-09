@@ -678,6 +678,16 @@ class_getInstanceMethod
 
 
 
+//////////////////////|  |////////////////////////////////
+#import <dlfcn.h>
+#import <objc/runtime.h>
+#import <CoreTelephony/CTCarrier.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#include <stdio.h>
+#import "AppUtils.h"
+#import "Reachability.h"
+///////////////////////|  |///////////////////////////
+
 #define  sycount()  static dispatch_once_t                                                                  \
 onceToken; dispatch_once(&onceToken, ^{//
 #define  sycountend()  });//
